@@ -12,7 +12,7 @@ Vue是采用`数据劫持`结合`发布者-订阅者模式`的方式来实现双
    1. 在自身实例化时往订阅器管理员(dep)里面添加自己
    2. 自身必须有一个update()方法，待属性变动dep.notice()通知时，能调用自身的update()方法，并触发Compile中绑定的回调，则功成身退
 
-![image-20220308201858759](https://raw.githubusercontent.com/Wine-doubao/figure-bed/main/img/202203261634225.png)
+![image-20220308201858759](https://s2.loli.net/2022/03/27/UodsHcta9XiMW2Q.png)
 
 ### Object.defineProperty与Proxy
 

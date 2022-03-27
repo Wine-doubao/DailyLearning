@@ -209,6 +209,3 @@ console.log(Object.getPrototypeOf(arr) === Array.prototype) // true
 - 对于对象的遍历，for-in 和 Object.keys(myObject) 都用于枚举对象属性，但for-in遍历是会包括原型方法和属性（性能非常差不推荐使用），Object.keys()不包括。
 
 ### 0.1+0.2!=0.3?
-
-
-
