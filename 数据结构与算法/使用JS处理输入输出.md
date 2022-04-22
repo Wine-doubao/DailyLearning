@@ -94,3 +94,33 @@ rl.on('line',function(data){
 */
 ```
 
+## 牛客网
+
+> 以上举例都是以赛码网为准，下面说明的是牛客网的V8模式下。
+
+### 数字
+
+输入只能使用readline()，如果输入的一行中只有一个数字，要用`parseInt(readline())`，而不能用readInt()。
+
+```javascript
+// 循环输出
+let line;
+while(line = readline()) {
+  let arr = line.split(' ').map(x => parseInt(x));
+}
+```
+
+### 字符串
+
+如果是n个用空格隔开的字符串的输入输出，则输出时要转化成字符串再输出，而不能直接打印数组！！
+
+![image-20220421201058473](https://s2.loli.net/2022/04/21/37LV4em2jwGbUEp.png)
+
+```javascript
+// 输入
+let arr = readline().split(' ');
+
+// 输出
+console.log(arr.join(' '));
+```
+
