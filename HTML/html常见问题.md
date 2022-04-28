@@ -15,7 +15,7 @@ HTML即HyperText Markup Language，超文本标记语言。超文本指的是可
 4. `canvas`绘图：标签只是图形容器，必须用脚本来绘制图形
 5. `SVG`绘图：可伸缩的矢量图形，使用XML描述2D图形
 6. 地理定位`Geolocation`
-7. `拖放API`
+7. `拖放API`：通过给元素设置draggable为true，最后通过使用JS移除和添加元素实现拖放。
 8. `WebWorker`：运行在后台的JavaScript，独立于其他脚本，不会影响页面的性能
 9. `WebStorage`：本地存储用户的浏览数据，不影响网站的性能
 10. `WebSocket`：在单个TCP链接上进行全双工通讯的协议
