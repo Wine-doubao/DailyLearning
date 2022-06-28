@@ -124,3 +124,15 @@ let arr = readline().split(' ');
 console.log(arr.join(' '));
 ```
 
+## 本地使用输入输出
+
+1. 提前安装`readline-sync`模块，它可以同步获取用户通过键盘输入的值。
+2. 创建js文件，在终端输入`node xxx.js`运行。
+
+```javascript
+// xxx.js
+const readline = require('readline-sync');// 引入readline-sync模块
+var str = readline.question(""); // 输入，如果有多行，需要写多行输入
+console.log(str);
+```
+
