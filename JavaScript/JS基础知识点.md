@@ -63,6 +63,33 @@ console.log('hello world' instanceof PrimitiveString) // true
 
 这其实也侧面反映了一个问题， instanceof 也不是百分之百可信的。
 
+### Object.prototype.toString().call(obj)判断类型的原理
+
+每个类型都有自己私有的`[[Class]]`属性（null 和 undefined 也有），`[[Class]]`属性表明了该对象的类型，且该属性不能被修改。toString 内部是获取 this 指向那个对象的 [[Class]] 属性值的，通过 call 可以让 this 指向要判断的 obj。
+
+还有一点为什么要用 Object 原型上的 toString 方法？因为所有类都继承 Object，在继承时改写了 toString，所以判断数据类型时，要使用原始方法，即 Object.prototype.toString()
+
+- 对于原始类型，toString 会进行装箱操作，产生很多临时对象，可以配合 typeof 来区分基本类型还是对象类型来判断
+- 该方法无法区分自定义对象类型，这类对象返回的都是 Object，针对自定义类型可以使用 instanceof 来区分
+
+```javascript
+console.log(Object.prototype.toString.call("jerry"));//[object String]
+console.log(Object.prototype.toString.call(12));//[object Number]
+console.log(Object.prototype.toString.call(true));//[object Boolean]
+console.log(Object.prototype.toString.call(undefined));//[object Undefined]
+console.log(Object.prototype.toString.call(null));//[object Null]
+console.log(Object.prototype.toString.call({name: "jerry"}));//[object Object]
+console.log(Object.prototype.toString.call(function(){}));//[object Function]
+console.log(Object.prototype.toString.call([]));//[object Array]
+console.log(Object.prototype.toString.call(new Date));//[object Date]
+console.log(Object.prototype.toString.call(/\d/));//[object RegExp]
+
+function Person(){};
+console.log(Object.prototype.toString.call(new Person));//[object Object]
+```
+
+
+
 ### 为什么会有**BigInt**的提案？ 
 
 JavaScript中Number.MAX_SAFE_INTEGER表示最大安全数字，计算结果是9007199254740991(2^53-1)，即在这个数范围内不会出现精度丢失（小数除外）。但是⼀旦超过这个范围，js就会出现计算不准确的情况，这在大数计算的时候不得不依靠⼀些第三方库进行解决，因此官方提出了BigInt来解决此问题。 
